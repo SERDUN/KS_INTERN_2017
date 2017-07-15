@@ -2,7 +2,15 @@
     <string name="app_name">KS_INTERN_2017</string>
     <string name="email_hint_text">Введите email адррес</string>
     <string name="access_checkbox">Разрешить</string>
+
     <string name="accept">Подтвердить</string>
     <string name="cancel">Отклонить</string>
+
+    <string name="send">Отпавить</string>
+    <string name="clear">Очистить поля</string>
+
+    <string name="sending">Отправка сообщения</string>
+    <string name="user_canceled">Пользователь не подтвердил адрес</string>
+    <string name="send_email">Отправка сообщения</string>
 
 </resources>

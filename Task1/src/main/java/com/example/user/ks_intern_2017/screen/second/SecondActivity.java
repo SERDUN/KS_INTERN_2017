@@ -17,8 +17,6 @@ public class SecondActivity extends AppCompatActivity implements SecondContract.
 
     private SecondPresenter secondPresenter;
     private TextView tvEmail;
-    private Button btnAccept;
-    private Button btnCancel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,9 +29,9 @@ public class SecondActivity extends AppCompatActivity implements SecondContract.
 
     private void initView() {
         tvEmail = (TextView) findViewById(R.id.et_email);
-        btnAccept = (Button) findViewById(R.id.btn_accept);
+        Button btnAccept = (Button) findViewById(R.id.btn_accept);
         btnAccept.setOnClickListener(v -> secondPresenter.sendMessage());
-        btnCancel = (Button) findViewById(R.id.btn_cancel);
+        Button btnCancel = (Button) findViewById(R.id.btn_cancel);
         btnCancel.setOnClickListener(v -> secondPresenter.cancel());
     }
 
@@ -57,7 +55,7 @@ public class SecondActivity extends AppCompatActivity implements SecondContract.
     @Override
     public void startSendIntent(String email) {
         Intent intent = new Intent(Intent.ACTION_SENDTO, Uri.fromParts("mailto", email, null));
-        startActivity(Intent.createChooser(intent, "Send Email"));
+        startActivity(Intent.createChooser(intent, getResources().getString(R.string.send_email)));
         setResult(RESULT_OK, getIntent());
         finish();
     }

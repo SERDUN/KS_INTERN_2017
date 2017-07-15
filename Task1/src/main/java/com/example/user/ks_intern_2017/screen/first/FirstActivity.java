@@ -17,7 +17,6 @@ public class FirstActivity extends AppCompatActivity implements FirstContract.Vi
     public static final int REQUEST_KODE = 1;
 
     private FirstPresenter firstPresenter;
-    private CheckBox cbAccess;
     private Button btnSend;
     private EditText etEmail;
 
@@ -32,7 +31,7 @@ public class FirstActivity extends AppCompatActivity implements FirstContract.Vi
 
     private void initialView() {
         etEmail = (EditText) findViewById(R.id.et_email);
-        cbAccess = (CheckBox) findViewById(R.id.cb_access_send);
+        CheckBox cbAccess = (CheckBox) findViewById(R.id.cb_access_send);
         btnSend = (Button) findViewById(R.id.btn_send);
         btnSend.setEnabled(false);
 
@@ -46,12 +45,7 @@ public class FirstActivity extends AppCompatActivity implements FirstContract.Vi
             }
 
         });
-    }///
-
-//    @Override
-//    public void setPresenter(FirstContract.Presenter presenter) {
-//
-//    }
+    }
 
     @Override
     public void clearField() {
@@ -79,9 +73,9 @@ public class FirstActivity extends AppCompatActivity implements FirstContract.Vi
             case REQUEST_KODE:
                 if (resultCode == RESULT_OK) {
                     firstPresenter.clearField();
-                    Toast.makeText(this, "sending message", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this,getResources().getString(R.string.sending), Toast.LENGTH_SHORT).show();
                 } else if (RESULT_CANCELED == resultCode) {
-                    Toast.makeText(this, "Пользователь не подтвердил адрес", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, getResources().getString(R.string.user_canceled), Toast.LENGTH_SHORT).show();
 
                 }
                 break;
