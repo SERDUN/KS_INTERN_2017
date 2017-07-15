@@ -20,6 +20,7 @@ public class FirstPresenter implements FirstContract.Presenter {
 
     @Override
     public void clearField() {
+        view.clearField();
 
     }
 

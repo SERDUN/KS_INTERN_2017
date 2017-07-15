@@ -38,6 +38,9 @@ public class FirstActivity extends AppCompatActivity implements FirstContract.Vi
         btnSend.setOnClickListener(view ->
                 firstPresenter.sendTextFromField(etEmail.getText().toString())
         );
+        Button btnClear=(Button)findViewById(R.id.btn_clear);
+        btnClear.setOnClickListener(v->firstPresenter.clearField());
+
 
         cbAccess.setOnCheckedChangeListener((view, checked) -> {
             if (view.getId() == R.id.cb_access_send) {
