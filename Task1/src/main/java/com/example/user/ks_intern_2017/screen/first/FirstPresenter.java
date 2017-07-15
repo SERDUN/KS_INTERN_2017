@@ -11,7 +11,6 @@ public class FirstPresenter implements FirstContract.Presenter {
 
     public FirstPresenter(FirstContract.View view) {
         this.view = view;
-//        this.view.setPresenter(this);
     }
 
     @Override
