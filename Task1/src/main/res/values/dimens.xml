@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="fab_margin">10dp</dimen>
+    <dimen name="button_margin">10dp</dimen>
+    <dimen name="container_top_margin">60dp</dimen>
+    <dimen name="height_button">100dp</dimen>
+
+</resources>
