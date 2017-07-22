@@ -14,6 +14,8 @@ public class DataEntryContract {
         void sendTextFromField();
 
         void showErrorMessage(String message);
+
+        void resetToInitialState();
     }
 
     public interface Presenter extends BasePresenter {

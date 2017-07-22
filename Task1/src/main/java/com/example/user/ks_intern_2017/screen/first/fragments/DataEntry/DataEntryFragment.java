@@ -29,6 +29,7 @@ public class DataEntryFragment extends Fragment implements DataEntryContract.Vie
     private DataEntryPresenter firstPresenter;
     private Button btnSend;
     private EditText etEmail;
+    private CheckBox cbAccess;
 
 
     @Override
@@ -98,7 +99,7 @@ public class DataEntryFragment extends Fragment implements DataEntryContract.Vie
 
     private void initialView(View view) {
         etEmail = (EditText) view.findViewById(R.id.et_email);
-        CheckBox cbAccess = (CheckBox) view.findViewById(R.id.cb_access_send);
+        cbAccess = (CheckBox) view.findViewById(R.id.cb_access_send);
         btnSend = (Button) view.findViewById(R.id.btn_send);
         btnSend.setEnabled(false);
 
@@ -132,6 +133,12 @@ public class DataEntryFragment extends Fragment implements DataEntryContract.Vie
     public void showErrorMessage(String msg) {
         Toast.makeText(getView().getContext(), msg, Toast.LENGTH_LONG).show();
 
+    }
+
+    @Override
+    public void resetToInitialState() {
+        etEmail.setText("");
+        cbAccess.setChecked(false);
     }
 
 

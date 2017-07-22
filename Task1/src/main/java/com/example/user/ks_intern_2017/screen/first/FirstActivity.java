@@ -52,7 +52,7 @@ public class FirstActivity extends AppCompatActivity implements FirstContract.Vi
                 firstPresenter.showCancelNoticeFragment();
                 break;
             case OkNotice:
-                ((DataEntryContract.View) fragments[0]).clearField();
+                ((DataEntryContract.View) fragments[0]).resetToInitialState();
                 currentFragmentEnum = CurrentFragmentEnum.DataEntry;
                 firstPresenter.showOkNoticeFragment();
                 break;
