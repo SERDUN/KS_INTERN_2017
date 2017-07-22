@@ -6,6 +6,7 @@ import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -61,4 +62,10 @@ public class SecondActivity extends AppCompatActivity implements SecondContract.
     }
 
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+
+        Log.d("test1", "onDestroy: SecondActivity");
+    }
 }

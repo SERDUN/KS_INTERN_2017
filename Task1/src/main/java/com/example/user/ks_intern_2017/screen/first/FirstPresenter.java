@@ -1,5 +1,7 @@
 package com.example.user.ks_intern_2017.screen.first;
 
+import android.util.Log;
+
 import com.example.user.ks_intern_2017.BaseView;
 
 /**
@@ -15,39 +17,31 @@ public class FirstPresenter implements FirstContract.Presenter {
 
     @Override
     public void init() {
+        view.showDataEntryFragment();
+
+    }
+
+
+    @Override
+    public void showOkNoticeFragment() {
+        view.showOkNoticeFragment();
+
+        Log.d("presenter", "showOkNoticeFragment: presenter");
+
 
     }
 
     @Override
-    public void clearField() {
-        view.clearField();
+    public void showCancelNoticeFragment() {
+        view.showCancelNoticeFragment();
 
     }
 
     @Override
-    public void sendTextFromField(String email) {
-        if (email.isEmpty()) {
-            view.showErrorMessage("field(email) is empty");
-            return;
-        }
+    public void showDataEntryFragment() {
+        view.showDataEntryFragment();
+        Log.d("presenter", "showDataEntryFragment: presenter");
 
-        if (validationEmail(email)) {
-            view.sendTextFromField();
-        } else {
-            view.showErrorMessage("incorrect email");
-
-        }
-    }
-
-    private boolean validationEmail(String email) {
-        //// TODO: 14.07.2017 rewrite the algorithm validation
-        if (email.contains("@")) {
-            if (email.contains(".")) {
-                return true;
-            }
-        }
-        return false;
 
     }
-
 }
