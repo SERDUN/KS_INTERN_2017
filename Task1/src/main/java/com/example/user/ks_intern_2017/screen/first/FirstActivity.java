@@ -68,8 +68,8 @@ public class FirstActivity extends AppCompatActivity implements FirstContract.Vi
     }
 
     private void init() {
-        fragments[0] = new DataEntryFragment();
-        fragments[1] = new OkNoticeFragment();
+        fragments[0] = DataEntryFragment.newInstance();
+        fragments[1] = OkNoticeFragment.newInstance();
         fragments[2] = CancelNoticeFragment.newInstance();
         firstPresenter.init();
 
