@@ -8,17 +8,25 @@ import com.example.user.ks_intern_2017.BaseView;
  */
 
 public class FirstContract {
-    interface View extends BaseView{
-        void clearField();
+    public interface View extends BaseView {
+        public void showOkNoticeFragment();
 
-        void sendTextFromField();
+        public void showCancelNoticeFragment();
 
-        void showErrorMessage(String message);
+        public void showDataEntryFragment();
+
+        public void showDataEntryFragmentAndClean();
+
     }
 
-    interface Presenter extends BasePresenter {
-        void clearField();
+    public interface Presenter extends BasePresenter {
+        public void showOkNoticeFragment();
 
-        void sendTextFromField(String string);
+        public void showCancelNoticeFragment();
+
+        public void showDataEntryFragment();
+
+
+
     }
 }
