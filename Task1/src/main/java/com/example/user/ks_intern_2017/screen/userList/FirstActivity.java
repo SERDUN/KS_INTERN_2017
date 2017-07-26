@@ -1,35 +1,39 @@
-package com.example.user.ks_intern_2017.screen.first;
+package com.example.user.ks_intern_2017.screen.userList;
 
 import android.content.Intent;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import android.util.Log;
 
 import com.example.user.ks_intern_2017.R;
-import com.example.user.ks_intern_2017.screen.first.fragments.CancelNotice.CancelNoticeFragment;
-import com.example.user.ks_intern_2017.screen.first.fragments.DataEntry.DataEntryContract;
-import com.example.user.ks_intern_2017.screen.first.fragments.DataEntry.DataEntryFragment;
-import com.example.user.ks_intern_2017.screen.first.fragments.OkNotice.OkNoticeFragment;
-import com.example.user.ks_intern_2017.screen.second.SecondActivity;
 
-public class FirstActivity extends AppCompatActivity implements FirstContract.View, DataEntryFragment.OnFragmentInteractionListener {
+import com.example.user.ks_intern_2017.data.model.User;
+import com.example.user.ks_intern_2017.screen.userDetails.SecondActivity;
+import com.example.user.ks_intern_2017.screen.userList.fragments.CancelNotice.CancelNoticeFragment;
+import com.example.user.ks_intern_2017.screen.userList.fragments.OkNotice.OkNoticeFragment;
+import com.example.user.ks_intern_2017.screen.userList.fragments.list.UserListFragment;
+
+public class FirstActivity extends AppCompatActivity implements FirstContract.View {
 
     static String TAG = "main_Activity";
 
 
-    public static final String EMAIL_KEY = "email";
-    public static final int REQUEST_KODE = 1;
+    public static final String USER_KEY = "user_key";
+    private static final int REQUEST_KODE = 1;
     public static final String TRANSACTION_KEY = "notice";
 
 
     public Fragment[] fragments = new Fragment[3];
-    private FirstPresenter firstPresenter;
+    private FirstContract.Presenter firstPresenter;
 
     private CurrentFragmentEnum currentFragmentEnum = CurrentFragmentEnum.DataEntry;
+
+    @Override
+    public void setPresenter(FirstContract.Presenter presenter) {
+        this.firstPresenter = presenter;
+    }
 
 
     private enum CurrentFragmentEnum {
@@ -45,14 +49,13 @@ public class FirstActivity extends AppCompatActivity implements FirstContract.Vi
 
         switch (currentFragmentEnum) {
             case DataEntry:
-                firstPresenter.showDataEntryFragment();
+                firstPresenter.showUserListFragment();
                 break;
             case CancelNotice:
                 currentFragmentEnum = CurrentFragmentEnum.DataEntry;
                 firstPresenter.showCancelNoticeFragment();
                 break;
             case OkNotice:
-                ((DataEntryContract.View) fragments[0]).resetToInitialState();
                 currentFragmentEnum = CurrentFragmentEnum.DataEntry;
                 firstPresenter.showOkNoticeFragment();
                 break;
@@ -63,12 +66,12 @@ public class FirstActivity extends AppCompatActivity implements FirstContract.Vi
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        firstPresenter = new FirstPresenter(this);
+        new FirstPresenter(this);
         init();
     }
 
     private void init() {
-        fragments[0] = DataEntryFragment.newInstance();
+        fragments[0] = UserListFragment.newInstance();
         fragments[1] = OkNoticeFragment.newInstance();
         fragments[2] = CancelNoticeFragment.newInstance();
         firstPresenter.init();
@@ -77,26 +80,19 @@ public class FirstActivity extends AppCompatActivity implements FirstContract.Vi
 
     @Override
     public void showOkNoticeFragment() {
-        addFragment(fragments[1], OkNoticeFragment.DATA_ENTRY_FRAGMENT_KEY);
+        addFragment(fragments[1], OkNoticeFragment.OK_NOTICE_FRAGMENT_KEY);
 
     }
 
     @Override
     public void showCancelNoticeFragment() {
-        addFragment(fragments[2], CancelNoticeFragment.DATA_ENTRY_FRAGMENT_KEY);
+        addFragment(fragments[2], OkNoticeFragment.OK_NOTICE_FRAGMENT_KEY);
 
     }
 
     @Override
-    public void showDataEntryFragment() {
-        addFragment(fragments[0], DataEntryFragment.DATA_ENTRY_FRAGMENT_KEY);
-    }
-
-    @Override
-    public void showDataEntryFragmentAndClean() {
-        addFragment(fragments[0], DataEntryFragment.DATA_ENTRY_FRAGMENT_KEY);
-//        ((DataEntryContract.View) fragments[0]).clearField();
-
+    public void showUserListFragment() {
+        addFragment(fragments[0], UserListFragment.USER_LIST_FRAGMENT_KEY);
     }
 
 
@@ -125,10 +121,11 @@ public class FirstActivity extends AppCompatActivity implements FirstContract.Vi
             }
         }
     }
+
     @Override
-    public void openSecondActivity(String email) {
+    public void openSecondActivity(User user) {
         Intent intent = new Intent(this, SecondActivity.class);
-        intent.putExtra(EMAIL_KEY, email);
+        intent.putExtra(USER_KEY, user);
         startActivityForResult(intent, REQUEST_KODE);
     }
 

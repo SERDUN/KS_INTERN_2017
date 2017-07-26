@@ -5,6 +5,6 @@
     <color name="colorAccent">#a96104</color>
 
     <color name="button_pressed">#43c4e8</color>
-    <color name="button_focused">#a96104</color>
-    <color name="button_default">#a96104</color>
+    <color name="button_focused">#1b7530</color>
+    <color name="button_default">#4b7580</color>
 </resources>

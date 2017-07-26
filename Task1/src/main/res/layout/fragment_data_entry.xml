@@ -6,72 +6,14 @@
     android:background="@drawable/abc4"
     android:orientation="vertical"
     android:weightSum="1"
-    tools:context="com.example.user.ks_intern_2017.screen.second.SecondActivity">
+    tools:context="com.example.user.ks_intern_2017.screen.userDetails.SecondActivity">
 
 
-    <LinearLayout
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_user_list"
         android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1" />
 
-        android:layout_height="100dp"
-        android:layout_margin="@dimen/button_margin"
-        android:layout_weight="1"
-        android:background="#73000000"
-        android:orientation="vertical">
-
-        <android.support.v7.widget.AppCompatEditText
-            android:id="@+id/et_email"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/container_top_margin"
-            android:backgroundTint="@color/button_default"
-            android:gravity="top"
-            android:hint="@string/email_hint_text"
-            android:inputType="textEmailAddress"
-            android:textColor="@color/button_pressed" />
-
-        <CheckBox
-            android:id="@+id/cb_access_send"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/access_checkbox" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/button_margin"
-        android:layout_marginTop="@dimen/container_top_margin"
-        android:layout_weight="1"
-        android:gravity="center"
-        android:orientation="horizontal">
-
-        <android.support.v7.widget.AppCompatButton
-            android:id="@+id/btn_send"
-            android:layout_width="wrap_content"
-            android:layout_height="@dimen/height_button"
-            android:layout_margin="5dp"
-            android:layout_weight="1"
-            android:background="@drawable/button_background"
-            android:gravity="center"
-            android:text="@string/send" />
-
-        <View
-            android:layout_width="1dp"
-            android:layout_height="100dp"
-            android:layout_gravity="top"
-            android:layout_marginTop="5dp"
-            android:background="@color/button_pressed" />
-
-        <android.support.v7.widget.AppCompatButton
-
-            android:id="@+id/btn_clear"
-            android:layout_width="wrap_content"
-            android:layout_height="@dimen/height_button"
-            android:layout_margin="5dp"
-            android:layout_weight="1"
-            android:background="@drawable/button_background"
-            android:gravity="center"
-            android:text="@string/clear" />
-    </LinearLayout>
 
 </LinearLayout>

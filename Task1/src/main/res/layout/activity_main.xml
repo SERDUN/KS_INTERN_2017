@@ -6,8 +6,9 @@
     android:background="@drawable/abc4"
     android:orientation="vertical"
     android:weightSum="1"
+    android:backgroundTint="#00ffffff"
     android:id="@+id/containerFragment"
-    tools:context="com.example.user.ks_intern_2017.screen.first.FirstActivity">
+    tools:context="com.example.user.ks_intern_2017.screen.userList.FirstActivity">
 
 
 
